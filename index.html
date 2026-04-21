@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شذرات | منصة الأدب العربي</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Kufi+Arabic:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="top-nav">
+        <div class="container nav-wrapper">
+            <div class="right-side">
+                <div class="logo">شذرات</div>
+                <nav class="nav-links">
+                    <a href="#" class="active">الرئيسية</a>
+                    <a href="#" class="btn-write">اكتب +</a>
+                </nav>
+           
+        </div>
+         <div class="user-profile-wrapper">
+    <div class="user-profile" id="profileToggle">
+        <span class="user-name">م</span>
+        <div class="avatar">م</div>
+    </div>
+
+    <div class="profile-dropdown" id="profileMenu">
+        <div class="dropdown-header">
+            <div class="avatar-large">م</div>
+            <h4>م </h4>
+            <p class="user-bio">مهتمة بالأدب والفلسفة. أكتب ما لا أستطيع قوله.</p>
+        </div>
+        <div class="user-stats-mini">
+            <span><strong>5</strong> نصوص</span>
+            <span><strong>120</strong> إعجاب</span>
+        </div>
+        <hr>
+        <ul class="dropdown-links">
+            <li><a href="#">📝 نصوصي</a></li>
+            <li><a href="#">🔖 المحفوظات</a></li>
+            <li><a href="#">⚙️ الإعدادات</a></li>
+            <li><a href="#" class="logout-link">تسجيل الخروج</a></li>
+        </ul>
+    </div>
+    </header>
+
+    <main class="container main-layout">
+        
+        <section class="content-area">
+            <div class="filter-tabs">
+             <button class="tab active" data-filter="all">الكل</button>
+             <button class="tab" data-filter="long-read">نصوص أدبية</button>
+              <button class="tab" data-filter="snippet">قصاصات</button>
+            </div>
+            <article class="post-card long-read">
+                <div class="post-type">نص أدبي</div>
+                <h2 class="post-title"><a href="#">في مديح العزلة: قراءة بين السطور</a></h2>
+                <p class="post-excerpt">هناك نوع من الصمت لا يدركه إلا من اعتاد الغوص في أعماق نفسه، حيث تتحول الكلمات إلى مجرد أصداء بعيدة...</p>
+                <div class="post-footer">
+                    <span class="date">منذ يومين</span>
+                    <button class="like-btn">♡ 30</button>
+                </div> </article>
+                <article class="post-card long-read">
+                <div class="post-type">نص أدبي</div>
+                <h2 class="post-title"><a href="#">هل نعيش أم نكرر</a></h2>
+                <p class="post-excerpt">بين سطوة التكرار وانبعاث الوجود: هل نعيش ام نكرر ...</p>
+                <div class="post-footer">
+                    <span class="date">منذ ساعة</span>
+                    <button class="like-btn">♡ 12</button>
+                </div> </article>
+                <article class="post-card long-read">
+                <div class="post-type">نص أدبي</div>
+                <h2 class="post-title"><a href="#">هوامش على حافة العدم</a></h2>
+                <p class="post-excerpt">تأملا في اغتراب الروح وثقل الحرية ...</p>
+                <div class="post-footer">
+                    <span class="date">منذ خمسة أيام</span>
+                    <button class="like-btn">♡ 100</button>
+                </div>
+            </article>
+
+            <article class="post-card snippet">
+                <div class="post-type">قصاصة</div>
+                <p class="snippet-text">"الكتابة هي الطريقة الوحيدة للتحدث دون أن يقطع أحد حبل أفكارك."</p>
+                <div class="post-footer">
+                    <span class="date">منذ 5 ساعات</span>
+                    <button class="like-btn">♡ 45</button>
+                </div> </article>
+                <article class="post-card snippet">
+                <div class="post-type">قصاصة</div>
+                <p class="snippet-text">"الحياةُ لا تُعطينا وعوداً، هي فقط تمنحنا لحظات؛ العبقريّ هو من يُدرك أن اللحظة التي تضيعُ الآن لن تفتحَ بابها مرةً أخرى."</p>
+                <div class="post-footer">
+                    <span class="date">منذ يوم</span>
+                    <button class="like-btn">♡ 15</button>
+                </div>
+            </article>
+        </section>
+
+        <aside class="sidebar">
+            <div class="sidebar-box">
+                <h3>الأكثر تفاعلاً</h3>
+                <ul class="trending-list">
+                    <li><a href="#">#أرق_كافكا</a></li>
+                    <li><a href="#">#فلسفة_الوجود</a></li>
+                    <li><a href="#">#ديستويفسكي</a></li>
+                </ul>
+            </div>
+           
+</div>
+        </aside>
+
+    </main>
+
+    <div id="writeModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>ماذا يدور في ذهنك؟</h2>
+        <div class="write-options">
+            <button onclick="showEditor('long')">نص أدبي طويل</button>
+            <button onclick="showEditor('short')">قصاصة سريعة</button>
+        </div>
+        <div id="editorArea" style="display:none; margin-top:20px;">
+            <input type="text" placeholder="العنوان..." id="postTitle">
+            <textarea placeholder="اكتب شذراتك هنا..." rows="8"></textarea>
+            <button class="btn-primary">نشر الآن</button>
+        </div>
+    </div>
+    </div>
+
+    <script>
+    // --- 1. نظام القائمة المنسدلة للملف الشخصي ---
+    const profileToggle = document.getElementById('profileToggle');
+    const profileMenu = document.getElementById('profileMenu');
+
+    if (profileToggle) {
+        profileToggle.onclick = function(e) {
+            e.stopPropagation();
+            // تبديل الظهور بين block و none
+            profileMenu.style.display = (profileMenu.style.display === 'block') ? 'none' : 'block';
+        };
+    }
+
+    // --- 2. نظام النافذة المنبثقة (اكتب +) ---
+    const modal = document.getElementById("writeModal");
+    const btnWrite = document.querySelector(".btn-write");
+    const spanClose = document.querySelector(".close");
+
+    if (btnWrite) {
+        btnWrite.onclick = function(e) {
+            e.preventDefault();
+            modal.style.display = "block";
+        }
+    }
+
+    if (spanClose) {
+        spanClose.onclick = function() {
+            modal.style.display = "none";
+        }
+    }
+
+    // --- 3. نظام تصنيف المحتوى (Tabs) ---
+    const tabs = document.querySelectorAll('.tab');
+    const posts = document.querySelectorAll('.post-card');
+
+    tabs.forEach(tab => {
+        tab.onclick = function() {
+            tabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+
+            const filter = this.getAttribute('data-filter');
+            posts.forEach(post => {
+                if (filter === 'all' || post.classList.contains(filter)) {
+                    post.style.display = 'block';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+        };
+    });
+
+    // --- 4. إغلاق أي نافذة مفتوحة عند الضغط خارجها ---
+    window.onclick = function(event) {
+        // إغلاق المودال
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+        // إغلاق قائمة البروفايل
+        if (profileMenu && !profileToggle.contains(event.target)) {
+            profileMenu.style.display = "none";
+        }
+    }
+
+    // دالة إظهار المحرر داخل المودال
+    function showEditor(type) {
+        document.getElementById('editorArea').style.display = 'block';
+        const titleInput = document.getElementById('postTitle');
+        titleInput.style.display = (type === 'short') ? 'none' : 'block';
+    }
+</script>
+
+</body>
+</html>

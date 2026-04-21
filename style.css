@@ -1,0 +1,258 @@
+:root {
+    --primary: #8b5e3c;
+    --bg: #f8f9fa;
+    --white: #ffffff;
+    --text: #333;
+    --gray: #777;
+    --border: #ececec;
+    --accent-light: #fdf5ef;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--bg);
+    /* تأثير الورق الخفيف */
+    background-image: radial-gradient(#d1d1d1 0.5px, transparent 0.5px);
+    background-size: 25px 25px;
+    font-family: 'Amiri', serif;
+    color: var(--text);
+    line-height: 1.6;
+    padding-top: 90px; /* مسافة عشان الهيدر الثابت */
+}
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+/* --- 1. الهيدر (Navigation) --- */
+.top-nav {
+    background: var(--white);
+    height: 70px;
+    border-bottom: 1px solid var(--border);
+    position: fixed;
+    top: 0; width: 100%; z-index: 2000;
+}
+
+.nav-wrapper { display: flex; justify-content: space-between; align-items: center; height: 100%; }
+
+.right-side, .left-side { display: flex; align-items: center; gap: 25px; }
+
+.logo { font-size: 1.8rem; font-weight: bold; color: var(--primary); }
+
+.nav-links a {
+    text-decoration: none; color: var(--text); 
+    font-family: 'Noto Kufi Arabic', sans-serif; font-size: 0.9rem;
+}
+
+.btn-write {
+    background: var(--primary); color: #fff !important;
+    padding: 6px 20px; border-radius: 25px;
+    transition: 0.3s;
+}
+
+.btn-write:hover { transform: scale(1.05); box-shadow: 0 4px 10px rgba(139, 94, 60, 0.2); }
+
+/* --- 2. الملف الشخصي والقائمة المنسدلة (Dropdown) --- */
+.user-profile-wrapper { position: relative; }
+
+.user-profile {
+    display: flex; align-items: center; gap: 10px;
+    cursor: pointer; padding: 5px 12px; border-radius: 30px;
+    transition: 0.3s;
+}
+.user-profile:hover { background: var(--accent-light); }
+
+.avatar { 
+    width: 35px; height: 35px; background: var(--primary); 
+    color: white; border-radius: 50%; 
+    display: flex; align-items: center; justify-content: center; font-weight: bold;
+}
+
+.profile-dropdown {
+    display: none; /* يتم التحكم به عبر JS */
+    position: absolute;
+    top: 55px; left: 0; width: 250px;
+    background: white; border: 1px solid var(--border);
+    border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    z-index: 3000; padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.dropdown-header { text-align: center; }
+.avatar-large {
+    width: 60px; height: 60px; background: var(--primary);
+    color: white; border-radius: 50%; display: flex;
+    align-items: center; justify-content: center;
+    margin: 0 auto 10px; font-size: 1.5rem;
+}
+
+.user-stats-mini {
+    display: flex; justify-content: space-around;
+    margin: 15px 0; font-size: 0.85rem; border-top: 1px solid #eee; padding-top: 10px;
+}
+
+.dropdown-links { list-style: none; }
+.dropdown-links li a {
+    display: block; padding: 10px; text-decoration: none;
+    color: var(--text); font-family: 'Noto Kufi Arabic';
+    font-size: 0.85rem; border-radius: 8px;
+}
+.dropdown-links li a:hover { background: var(--accent-light); color: var(--primary); }
+
+/* --- 3. تقسيم الصفحة (Grid) --- */
+.main-layout {
+    display: grid; grid-template-columns: 2fr 1fr;
+    gap: 30px; margin-top: 20px;
+}
+
+.filter-tabs { display: flex; gap: 10px; margin-bottom: 25px; }
+.tab {
+    border: none; background: #eee; padding: 7px 18px;
+    border-radius: 20px; cursor: pointer; font-family: 'Noto Kufi Arabic'; font-size: 0.8rem;
+}
+.tab.active { background: var(--primary); color: white; }
+
+/* --- 4. البطاقات (Cards) --- */
+.post-card {
+    background: var(--white); padding: 30px;
+    border-radius: 12px; border: 1px solid var(--border);
+    margin-bottom: 25px; transition: 0.3s;
+}
+.post-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+.post-type {
+    font-family: 'Noto Kufi Arabic'; font-size: 0.7rem;
+    color: var(--primary); background: var(--accent-light);
+    padding: 2px 10px; border-radius: 4px; margin-bottom: 10px; display: inline-block;
+}
+
+.post-title a { text-decoration: none; color: var(--text); font-size: 1.7rem; }
+.post-excerpt { color: var(--gray); font-size: 1.1rem; margin: 15px 0; text-align: justify; }
+
+/* --- 5.النافذة المنبثقة (Modal) --- */
+.modal {
+    display: none; position: fixed; z-index: 4000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background: white; margin: 8% auto; padding: 30px;
+    border-radius: 15px; width: 50%; position: relative;
+    animation: modalSlide 0.4s ease;
+}
+
+.close { float: left; font-size: 24px; cursor: pointer; color: #888; }
+
+#editorArea input, #editorArea textarea {
+    width: 100%; margin-bottom: 15px; padding: 12px;
+    border: 1px solid #eee; border-radius: 8px; font-family: 'Amiri'; outline: none;
+}
+#editorArea input:focus { border-color: var(--primary); }
+
+/* --- 6. الشريط الجانبي (Sidebar) --- */
+.sidebar-box {
+    background: var(--white); padding: 20px;
+    border-radius: 12px; border: 1px solid var(--border); margin-bottom: 20px;
+}
+.sidebar-box h3 { font-family: 'Noto Kufi Arabic'; font-size: 0.9rem; margin-bottom: 15px; border-bottom: 2px solid var(--primary); display: inline-block; }
+
+.trending-list { list-style: none; }
+.trending-list li a { text-decoration: none; color: var(--primary); font-size: 0.95rem; display: block; margin-bottom: 8px; }
+
+/* --- Animations --- */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modalSlide { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+like-btn {
+    background: none;
+    border: 1px solid #ddd;
+    padding: 5px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.like-btn:hover {
+    color: #e74c3c;
+    border-color: #e74c3c;
+    background: #fdf2f2;
+}
+
+/* تنسيق أزرار التصنيف (Tabs) */
+.filter-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.tab {
+    border: 1px solid transparent;
+    background: #eef0f2;
+    padding: 8px 22px;
+    border-radius: 20px;
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-size: 0.85rem;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab:hover {
+    background: #e2e5e9;
+    color: var(--primary);
+}
+
+.tab.active {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 4px 12px rgba(139, 94, 60, 0.25);
+}
+
+/* تنسيق أزرار الخيارات داخل نافذة "اكتب" */
+.write-options {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.write-options button {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid var(--border);
+    background: white;
+    border-radius: 10px;
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    color: var(--text);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.write-options button:hover {
+    border-color: var(--primary);
+    background: var(--accent-light);
+    color: var(--primary);
+}
+
+/* زر "نشر الآن" الرئيسي */
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 35px;
+    border-radius: 25px;
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%; /* ليأخذ عرض النموذج */
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(139, 94, 60, 0.3);
+    filter: brightness(1.1);
+}
