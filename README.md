@@ -56,7 +56,7 @@ No installation or dependencies needed.
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/shadharat.git
+git clone https://github.com/ili1iml/Shadharat.git
 
 # Navigate into the folder
 cd shadharat
